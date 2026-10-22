@@ -29,8 +29,9 @@
   <div class="card">
     <h2>Qué datos usa la app</h2>
     <p>La app guarda tus tareas, notas, recordatorios y ajustes en una base de datos en tu equipo.
-    Nosotros no recibimos, vemos ni guardamos ninguno de esos datos. La app no tiene servidor propio,
-    no usa analítica, no muestra publicidad y no vende ni comparte datos con nadie.</p>
+    Nosotros no recibimos, vemos ni guardamos esos datos. La app no usa analítica, no muestra publicidad y no vende
+    datos. Solo la función opcional de contactos guarda algunos datos fuera de tu equipo y de tu Drive: lo explica
+    la sección "Contactos".</p>
 
     <h2>Google</h2>
     <p>Si iniciás sesión con Google para sincronizar, la app pide solo estos permisos:</p>
@@ -45,9 +46,33 @@
     <a href="https://developers.google.com/terms/api-services-user-data-policy">Política de datos de usuario de los servicios de API de Google</a>,
     incluidos los requisitos de uso limitado.</p>
 
+    <h2>Contactos</h2>
+    <p>En Ajustes → Contactos podés mandar una solicitud de contacto con el email de otra persona. Esta función usa
+    Firebase, un servicio de Google Cloud, en el proyecto <code>my-daily-things</code>. Los datos se guardan en
+    Europa (<code>eur3</code>). La app entra en Firebase con tu cuenta de Google; no pide permisos nuevos.</p>
+    <p>Qué se guarda en Firebase:</p>
+    <ul>
+      <li>Tu email y un identificador de cuenta de Firebase.</li>
+      <li>Las solicitudes: el email de quien la manda, el email de destino y la fecha.</li>
+      <li>Tus contactos aceptados: los dos emails y la fecha.</li>
+      <li>Tus bloqueos y tu lista privada de solicitudes rechazadas.</li>
+    </ul>
+    <p>Quién lo ve:</p>
+    <ul>
+      <li>Una solicitud la ven solo quien la manda y quien la recibe. Quien la manda no sabe si el email tiene cuenta,
+      si la viste o si la rechazaste.</li>
+      <li>Tus contactos los ven solo vos y esa persona. Tus bloqueos y rechazos los ves solo vos.</li>
+      <li>Las reglas de seguridad de Firebase aplican estos límites en el servidor.</li>
+      <li>Como administrador del proyecto, podemos acceder técnicamente a estos datos. No los miramos, salvo para
+      resolver un problema o para borrarlos si lo pedís.</li>
+    </ul>
+    <p>Tus tareas no se guardan en Firebase.</p>
+
     <h2>Cómo borrar tus datos</h2>
     <ul>
       <li>Cerrá sesión en la app (Ajustes → Cuenta) para que deje de sincronizar.</li>
+      <li>En Ajustes → Contactos, cancelá tus solicitudes y quitá tus contactos. Para borrar todo lo que tu cuenta tiene
+      en Firebase, escribinos al email de abajo.</li>
       <li>Quitá el acceso de la app en <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>:
       Google borra entonces la carpeta privada de la app en tu Drive.</li>
       <li>Los datos locales están en la carpeta <code>%USERPROFILE%\MyDailyThings</code>. Para borrarlos, desinstalá la app y borrá esa carpeta.
@@ -65,9 +90,9 @@
 
   <div class="card">
     <h2>What data the app uses</h2>
-    <p>The app stores your tasks, notes, reminders and settings in a database on your computer. We never receive,
-    see or store any of that data. The app has no server of its own, uses no analytics, shows no ads, and does not sell
-    or share data with anyone.</p>
+    <p>The app stores your tasks, notes, reminders and settings in a database on your computer. We do not receive,
+    see or store that data. The app uses no analytics, shows no ads and does not sell data. Only the optional contacts
+    feature keeps some data outside your computer and your Drive: see "Contacts".</p>
 
     <h2>Google</h2>
     <p>If you sign in with Google to sync, the app asks only for:</p>
@@ -82,9 +107,33 @@
     <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
     including the Limited Use requirements.</p>
 
+    <h2>Contacts</h2>
+    <p>In Settings → Contacts you can send a contact request with another person's email. This feature uses Firebase,
+    a Google Cloud service, in the project <code>my-daily-things</code>. The data is stored in Europe
+    (<code>eur3</code>). The app signs in to Firebase with your Google account; it asks for no new permissions.</p>
+    <p>What is stored in Firebase:</p>
+    <ul>
+      <li>Your email and a Firebase account id.</li>
+      <li>Requests: the sender's email, the recipient's email and the date.</li>
+      <li>Your accepted contacts: both emails and the date.</li>
+      <li>Your blocks and your private list of rejected requests.</li>
+    </ul>
+    <p>Who sees it:</p>
+    <ul>
+      <li>Only the sender and the recipient see a request. The sender does not learn whether the email has an account,
+      whether you saw the request or whether you rejected it.</li>
+      <li>Only you and that person see a contact. Only you see your blocks and rejections.</li>
+      <li>Firebase security rules enforce these limits on the server.</li>
+      <li>As the project's administrator, we can technically access this data. We do not look at it, except to fix a
+      problem or to delete it if you ask.</li>
+    </ul>
+    <p>Your tasks are not stored in Firebase.</p>
+
     <h2>How to delete your data</h2>
     <ul>
       <li>Sign out in the app (Settings → Account) to stop syncing.</li>
+      <li>In Settings → Contacts, cancel your requests and remove your contacts. To delete everything your account has
+      in Firebase, email us at the address below.</li>
       <li>Remove the app's access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>:
       Google then deletes the app's private folder in your Drive.</li>
       <li>Local data is in the folder <code>%USERPROFILE%\MyDailyThings</code>. To delete it, uninstall the app and delete that folder.
