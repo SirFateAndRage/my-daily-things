@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacidad · My Daily Things</title>
+<meta name="description" content="Política de privacidad de My Daily Things / Privacy policy of My Daily Things.">
+<link rel="icon" href="icon.png">
+<style>
+  :root { --bg: #f2f2f7; --card: #fff; --text: #1c1c1e; --muted: #6e6e73; --accent: #007aff; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #000; --card: #1c1c1e; --text: #f2f2f7; --muted: #98989d; --accent: #0a84ff; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.55 -apple-system, "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-size: 34px; line-height: 1.1; margin: 0 0 4px; }
+  h2 { font-size: 22px; margin: 32px 0 8px; }
+  .card { background: var(--card); border-radius: 14px; padding: 4px 20px; margin: 16px 0; }
+  .muted { color: var(--muted); font-size: 15px; }
+  a { color: var(--accent); }
+  code { font-size: 15px; }
+  hr { border: 0; border-top: 1px solid rgba(128,128,128,.25); margin: 40px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Política de privacidad</h1>
+  <div class="muted">My Daily Things · Última actualización: 22 de octubre de 2026 · <a href="index.html">Inicio</a></div>
+
+  <div class="card">
+    <h2>Qué datos usa la app</h2>
+    <p>La app guarda tus tareas, notas, recordatorios y ajustes en una base de datos en tu equipo.
+    Nosotros no recibimos, vemos ni guardamos ninguno de esos datos. La app no tiene servidor propio,
+    no usa analítica, no muestra publicidad y no vende ni comparte datos con nadie.</p>
+
+    <h2>Google</h2>
+    <p>Si iniciás sesión con Google para sincronizar, la app pide solo estos permisos:</p>
+    <ul>
+      <li><code>openid</code> y <code>email</code>: para saber con qué cuenta iniciaste sesión y mostrarla en Ajustes.</li>
+      <li><code>drive.appdata</code>: para leer y escribir los archivos de sincronización de la app en su carpeta privada
+      dentro de tu Google Drive. La app no puede ver ni tocar tus otros archivos de Drive.</li>
+    </ul>
+    <p>Los datos van directamente de tu equipo a tu Google Drive. La sesión (el token de Google) se guarda en el
+    Administrador de credenciales de Windows de tu equipo.</p>
+    <p>El uso de la información recibida de las APIs de Google cumple la
+    <a href="https://developers.google.com/terms/api-services-user-data-policy">Política de datos de usuario de los servicios de API de Google</a>,
+    incluidos los requisitos de uso limitado.</p>
+
+    <h2>Cómo borrar tus datos</h2>
+    <ul>
+      <li>Cerrá sesión en la app (Ajustes → Cuenta) para que deje de sincronizar.</li>
+      <li>Quitá el acceso de la app en <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>:
+      Google borra entonces la carpeta privada de la app en tu Drive.</li>
+      <li>Para borrar los datos locales, desinstalá la app y borrá la carpeta <code>%APPDATA%\com.crismilani.mistareas</code>.</li>
+    </ul>
+
+    <h2>Contacto</h2>
+    <p><a href="mailto:milanicristian94@gmail.com">milanicristian94@gmail.com</a></p>
+  </div>
+
+  <hr id="en">
+
+  <h1>Privacy policy</h1>
+  <div class="muted">My Daily Things · Last updated: October 22, 2026</div>
+
+  <div class="card">
+    <h2>What data the app uses</h2>
+    <p>The app stores your tasks, notes, reminders and settings in a database on your computer. We never receive,
+    see or store any of that data. The app has no server of its own, uses no analytics, shows no ads, and does not sell
+    or share data with anyone.</p>
+
+    <h2>Google</h2>
+    <p>If you sign in with Google to sync, the app asks only for:</p>
+    <ul>
+      <li><code>openid</code> and <code>email</code>: to know which account you signed in with and show it in Settings.</li>
+      <li><code>drive.appdata</code>: to read and write the app's sync files in its private folder in your Google Drive.
+      The app cannot see or change your other Drive files.</li>
+    </ul>
+    <p>Data goes directly from your computer to your Google Drive. The session (Google token) is stored in the Windows
+    Credential Manager on your computer.</p>
+    <p>The app's use of information received from Google APIs adheres to the
+    <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
+    including the Limited Use requirements.</p>
+
+    <h2>How to delete your data</h2>
+    <ul>
+      <li>Sign out in the app (Settings → Account) to stop syncing.</li>
+      <li>Remove the app's access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>:
+      Google then deletes the app's private folder in your Drive.</li>
+      <li>To delete local data, uninstall the app and delete the folder <code>%APPDATA%\com.crismilani.mistareas</code>.</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p><a href="mailto:milanicristian94@gmail.com">milanicristian94@gmail.com</a></p>
+  </div>
+</main>
+</body>
+</html>
