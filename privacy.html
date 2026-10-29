@@ -28,45 +28,70 @@
 
   <div class="card">
     <h2>Qué datos usa la app</h2>
-    <p>La app guarda tus tareas, notas, recordatorios y ajustes en una base de datos en tu equipo.
-    Nosotros no recibimos, vemos ni guardamos esos datos. La app no usa analítica, no muestra publicidad y no vende
-    datos. Solo la función opcional de contactos guarda algunos datos fuera de tu equipo y de tu Drive: lo explica
-    la sección "Contactos".</p>
+    <p>La app guarda tus tareas, notas, recordatorios y ajustes en una base de datos en tu equipo (Windows) o en
+    la carpeta privada de la app en tu teléfono (Android). Nosotros no recibimos, vemos ni guardamos esos datos. La app
+    no usa analítica, no muestra publicidad y no vende datos. Solo la lista de acceso, los contactos y las tareas que
+    compartís se guardan fuera de tu equipo y de tu Drive: lo explica la sección "Firebase".</p>
 
     <h2>Google</h2>
     <p>Si iniciás sesión con Google para sincronizar, la app pide solo estos permisos:</p>
     <ul>
       <li><code>openid</code> y <code>email</code>: para saber con qué cuenta iniciaste sesión y mostrarla en Ajustes.</li>
+      <li><code>profile</code> (solo en Windows): tu nombre de Google, para que una solicitud de acceso lo muestre. En
+      Android el inicio de sesión ya lo da.</li>
       <li><code>drive.appdata</code>: para leer y escribir los archivos de sincronización de la app en su carpeta privada
       dentro de tu Google Drive. La app no puede ver ni tocar tus otros archivos de Drive.</li>
     </ul>
-    <p>Los datos van directamente de tu equipo a tu Google Drive. La sesión (el token de Google) se guarda en el
-    Administrador de credenciales de Windows de tu equipo.</p>
+    <p>Los datos van directamente de tu equipo o tu teléfono a tu Google Drive.</p>
+    <ul>
+      <li><b>Windows:</b> la sesión (el token de Google) se guarda en el Administrador de credenciales de Windows.</li>
+      <li><b>Android:</b> el inicio de sesión lo hace Android con los servicios de Google Play. La app no guarda ningún
+      token de Google: Android le da uno nuevo cada vez que sincroniza. La sesión de Firebase se guarda cifrada con una
+      clave del Android Keystore, en la carpeta privada de la app. La app no hace copias de seguridad de sus datos en
+      la nube de Android: en un teléfono nuevo, iniciás sesión y tus tareas vuelven desde tu Drive.</li>
+    </ul>
     <p>El uso de la información recibida de las APIs de Google cumple la
     <a href="https://developers.google.com/terms/api-services-user-data-policy">Política de datos de usuario de los servicios de API de Google</a>,
     incluidos los requisitos de uso limitado.</p>
 
-    <h2>Contactos</h2>
-    <p>En Ajustes → Contactos podés mandar una solicitud de contacto con el email de otra persona. Esta función usa
-    Firebase, un servicio de Google Cloud, en el proyecto <code>my-daily-things</code>. Los datos se guardan en
-    Europa (<code>eur3</code>). La app entra en Firebase con tu cuenta de Google; no pide permisos nuevos.</p>
+    <h2>Notificaciones</h2>
+    <p>Los recordatorios se programan en tu propio equipo o teléfono: nada sale de él para avisarte. En Android la
+    app pide permiso para mostrar notificaciones y usa alarmas exactas para que el recordatorio suene a su hora,
+    aunque la app esté cerrada.</p>
+
+    <h2>Firebase</h2>
+    <p>La lista de acceso, los contactos y las tareas compartidas usan Firebase, un servicio de Google Cloud, en el
+    proyecto <code>my-daily-things</code>. Los datos se guardan en Europa (<code>eur3</code>). La app entra en Firebase
+    con tu cuenta de Google; no pide permisos nuevos. En Ajustes → Contactos podés mandar una solicitud de contacto con
+    el email de otra persona.</p>
     <p>Qué se guarda en Firebase:</p>
     <ul>
+      <li>Si tu cuenta está habilitada para usar la app: tu email en la lista de acceso.</li>
       <li>Tu email y un identificador de cuenta de Firebase.</li>
+      <li>Si pedís acceso: una solicitud con tu email, tu nombre de Google, su estado (pendiente o rechazada) y las
+      fechas. Se borra cuando se acepta, o cuando el administrador borra un rechazo. Una cuenta de Firebase sin datos
+      puede quedar después.</li>
       <li>Las solicitudes: el email de quien la manda, el email de destino y la fecha.</li>
       <li>Tus contactos aceptados: los dos emails y la fecha.</li>
       <li>Tus bloqueos y tu lista privada de solicitudes rechazadas.</li>
+      <li>Cada tarea que compartís con un contacto: su título, notas, fecha, prioridad, dificultad y recordatorio, los
+      dos emails, si la otra persona la aceptó o descartó y cómo avanza.</li>
     </ul>
     <p>Quién lo ve:</p>
     <ul>
       <li>Una solicitud la ven solo quien la manda y quien la recibe. Quien la manda no sabe si el email tiene cuenta,
       si la viste o si la rechazaste.</li>
       <li>Tus contactos los ven solo vos y esa persona. Tus bloqueos y rechazos los ves solo vos.</li>
+      <li>Una tarea compartida la ven solo quien la manda y quien la recibe.</li>
+      <li>Tu solicitud de acceso la ven solo vos y el administrador.</li>
       <li>Las reglas de seguridad de Firebase aplican estos límites en el servidor.</li>
       <li>Como administrador del proyecto, podemos acceder técnicamente a estos datos. No los miramos, salvo para
       resolver un problema o para borrarlos si lo pedís.</li>
     </ul>
-    <p>Tus tareas no se guardan en Firebase.</p>
+    <p>El resto de tus tareas no se guarda en Firebase.</p>
+
+    <h2>Clima (opcional)</h2>
+    <p>Si activás "Mostrar clima" en Ajustes, la app lee la ubicación aproximada del dispositivo, la redondea a unos 11 km y la envía a <a href="https://open-meteo.com/">Open-Meteo</a> para pedir el clima. Para obtener el nombre del lugar, la redondea a unos 1 km y la envía a <a href="https://nominatim.openstreetmap.org/">OpenStreetMap Nominatim</a>. No se envía nada más. El último resultado queda guardado solo en este dispositivo y no se sincroniza. Datos del clima de Open-Meteo.com (CC BY 4.0). Nombre del lugar: © colaboradores de OpenStreetMap (ODbL).</p>
 
     <h2>Cómo borrar tus datos</h2>
     <ul>
@@ -75,7 +100,8 @@
       en Firebase, escribinos al email de abajo.</li>
       <li>Quitá el acceso de la app en <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>:
       Google borra entonces la carpeta privada de la app en tu Drive.</li>
-      <li>Los datos locales están en la carpeta <code>%USERPROFILE%\MyDailyThings</code>. Para borrarlos, desinstalá la app y borrá esa carpeta.
+      <li>En Android, desinstalar la app borra todos sus datos del teléfono.</li>
+      <li>En Windows, los datos locales están en la carpeta <code>%USERPROFILE%\MyDailyThings</code>. Para borrarlos, desinstalá la app y borrá esa carpeta.
         Si usaste una versión anterior, puede quedar una copia de respaldo en <code>%APPDATA%\com.crismilani.mistareas.bak-&lt;fecha&gt;</code>: borrala también.</li>
     </ul>
 
@@ -90,44 +116,69 @@
 
   <div class="card">
     <h2>What data the app uses</h2>
-    <p>The app stores your tasks, notes, reminders and settings in a database on your computer. We do not receive,
-    see or store that data. The app uses no analytics, shows no ads and does not sell data. Only the optional contacts
-    feature keeps some data outside your computer and your Drive: see "Contacts".</p>
+    <p>The app stores your tasks, notes, reminders and settings in a database on your computer (Windows) or in the
+    app's private folder on your phone (Android). We do not receive, see or store that data. The app uses no analytics,
+    shows no ads and does not sell data. Only the access list, contacts and the tasks you share are kept outside your
+    device and your Drive: see "Firebase".</p>
 
     <h2>Google</h2>
     <p>If you sign in with Google to sync, the app asks only for:</p>
     <ul>
       <li><code>openid</code> and <code>email</code>: to know which account you signed in with and show it in Settings.</li>
+      <li><code>profile</code> (Windows only): your Google name, so an access request can show it. On Android the
+      sign-in already gives it.</li>
       <li><code>drive.appdata</code>: to read and write the app's sync files in its private folder in your Google Drive.
       The app cannot see or change your other Drive files.</li>
     </ul>
-    <p>Data goes directly from your computer to your Google Drive. The session (Google token) is stored in the Windows
-    Credential Manager on your computer.</p>
+    <p>Data goes directly from your computer or phone to your Google Drive.</p>
+    <ul>
+      <li><b>Windows:</b> the session (Google token) is stored in the Windows Credential Manager.</li>
+      <li><b>Android:</b> Android signs you in through Google Play services. The app keeps no Google token: Android
+      gives it a fresh one each time it syncs. The Firebase session is stored encrypted with an Android Keystore key, in
+      the app's private folder. The app does not back up its data to Android's cloud backup: on a new phone, you sign in
+      and your tasks come back from your Drive.</li>
+    </ul>
     <p>The app's use of information received from Google APIs adheres to the
     <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
     including the Limited Use requirements.</p>
 
-    <h2>Contacts</h2>
-    <p>In Settings → Contacts you can send a contact request with another person's email. This feature uses Firebase,
-    a Google Cloud service, in the project <code>my-daily-things</code>. The data is stored in Europe
-    (<code>eur3</code>). The app signs in to Firebase with your Google account; it asks for no new permissions.</p>
+    <h2>Notifications</h2>
+    <p>Reminders are scheduled on your own computer or phone: nothing leaves it to remind you. On Android the app asks
+    for permission to show notifications and uses exact alarms so a reminder rings on time, even with the app closed.</p>
+
+    <h2>Firebase</h2>
+    <p>The access list, contacts and shared tasks use Firebase, a Google Cloud service, in the project
+    <code>my-daily-things</code>. The data is stored in Europe (<code>eur3</code>). The app signs in to Firebase with your
+    Google account; it asks for no new permissions. In Settings → Contacts you can send a contact request with another
+    person's email.</p>
     <p>What is stored in Firebase:</p>
     <ul>
+      <li>If your account may use the app: your email on the access list.</li>
       <li>Your email and a Firebase account id.</li>
+      <li>If you request access: a request with your email, your Google name, its status (pending or rejected) and the
+      dates. It is deleted when it is accepted, or when the admin deletes a rejection. A Firebase account with no data
+      may stay after that.</li>
       <li>Requests: the sender's email, the recipient's email and the date.</li>
       <li>Your accepted contacts: both emails and the date.</li>
       <li>Your blocks and your private list of rejected requests.</li>
+      <li>Each task you share with a contact: its title, notes, date, priority, difficulty and reminder, both emails,
+      whether the other person accepted or discarded it, and how it progresses.</li>
     </ul>
     <p>Who sees it:</p>
     <ul>
       <li>Only the sender and the recipient see a request. The sender does not learn whether the email has an account,
       whether you saw the request or whether you rejected it.</li>
       <li>Only you and that person see a contact. Only you see your blocks and rejections.</li>
+      <li>Only the sender and the recipient see a shared task.</li>
+      <li>Only you and the admin see your access request.</li>
       <li>Firebase security rules enforce these limits on the server.</li>
       <li>As the project's administrator, we can technically access this data. We do not look at it, except to fix a
       problem or to delete it if you ask.</li>
     </ul>
-    <p>Your tasks are not stored in Firebase.</p>
+    <p>Your other tasks are not stored in Firebase.</p>
+
+    <h2>Weather (optional)</h2>
+    <p>If you turn on "Show weather" in Settings, the app reads the device's approximate location, rounds it to about 11 km and sends it to <a href="https://open-meteo.com/">Open-Meteo</a> to get the weather. To get the place name, it rounds it to about 1 km and sends it to <a href="https://nominatim.openstreetmap.org/">OpenStreetMap Nominatim</a>. Nothing else is sent. The last result stays on this device only and is not synced. Weather data by Open-Meteo.com (CC BY 4.0). Place name: © OpenStreetMap contributors (ODbL).</p>
 
     <h2>How to delete your data</h2>
     <ul>
@@ -136,7 +187,8 @@
       in Firebase, email us at the address below.</li>
       <li>Remove the app's access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>:
       Google then deletes the app's private folder in your Drive.</li>
-      <li>Local data is in the folder <code>%USERPROFILE%\MyDailyThings</code>. To delete it, uninstall the app and delete that folder.
+      <li>On Android, uninstalling the app deletes all its data from the phone.</li>
+      <li>On Windows, local data is in the folder <code>%USERPROFILE%\MyDailyThings</code>. To delete it, uninstall the app and delete that folder.
         If you used an older version, a backup copy may remain in <code>%APPDATA%\com.crismilani.mistareas.bak-&lt;date&gt;</code>: delete it too.</li>
     </ul>
 
